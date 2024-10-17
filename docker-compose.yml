@@ -1,0 +1,6 @@
+services:
+  mlops-demo:
+    build: .
+    ports:
+      - "80:80"
+    container_name: mlops-demo
