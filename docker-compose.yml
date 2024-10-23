@@ -3,4 +3,4 @@ services:
     build: .
     ports:
       - "80:80"
-    container_name: mlops-demo
+    container_name: mlops-tp1
