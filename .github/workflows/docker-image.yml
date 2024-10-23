@@ -17,6 +17,6 @@ jobs:
     - run: docker push glalire/mlops-tp1
     - run: sudo apt-get install sshpass
     - run: |
-      sshpass -p ${{ secrets.SERVER_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_IP }} \
+      sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_IP }} \
       "docker pull ${{ secrets.DOCKER_USER }}/mlops-tp1 &&\
       docker run -d ${{ secrets.DOCKER_USER }}/mlops-tp1"
