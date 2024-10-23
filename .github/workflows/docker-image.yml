@@ -15,4 +15,5 @@ jobs:
     - run: docker tag mlops-tp1 glalire/mlops-tp1
     - run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
     - run: docker push glalire/mlops-tp1
-    - run: ssh ubuntu@17.2.2.1 "docker compose pull glalire/mlops-tp1"
+    - run: sudo apt-get install sshpass
+    - run: sshpass -p ${{ secrets.SERVER_PASSWORD }} ssh ${{ secrets.SERVER_IP }}
