@@ -12,8 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - run: docker build -t mlops-tp1 .
-    - run: docker tag mlops-tp1 glalire/mlops-tp1
+    - run: docker tag mlops-tp1 ${{ secrets.DOCKER_USER }}/mlops-tp1
     - run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
     - run: docker push glalire/mlops-tp1
     - run: sudo apt-get install sshpass
-    - run: sshpass -p ${{ secrets.SERVER_PASSWORD }} ssh ${{ secrets.SERVER_IP }}
+    - run: sshpass -p ${{ secrets.SERVER_PASSWORD }} ssh ${{ secrets.SERVER_IP }} "docker compose pull ${{ secrets.DOCKER_USER }}/mlops-tp1"
